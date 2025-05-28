@@ -16,19 +16,19 @@ import {
 import { useForm } from "react-hook-form";
 import { loginSchema } from "@/lib/validators";
 import { Card, CardHeader } from "@/components/ui/card";
-import { useAuth } from "@/lib/context/AuthProvider";
+// import { useAuth } from "@/lib/context/AuthProvider";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 
 const LoginPage = () => {
   const router = useRouter();
-  const { login, token } = useAuth();
+  // const { login, token } = useAuth();
 
-  useEffect(() => {
-    if (token) {
-      router.push("/dashboard");
-    }
-  }, [token, router]);
+  // useEffect(() => {
+  //   if (token) {
+  //     router.push("/dashboard");
+  //   }
+  // }, [token, router]);
 
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
@@ -39,7 +39,9 @@ const LoginPage = () => {
   });
 
   async function onSubmit(values: z.infer<typeof loginSchema>) {
-    login(values);
+    // login(values);
+    console.log(values);
+    router.push("/dashboard");
   }
 
   return (
